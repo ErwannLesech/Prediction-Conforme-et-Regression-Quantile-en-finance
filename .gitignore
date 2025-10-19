@@ -1,0 +1,13 @@
+# Données
+/data/raw/*
+/data/processed/*
+!/data/.gitkeep
+
+# Notebooks checkpoints
+**/.ipynb_checkpoints
+
+# Environnement
+__pycache__/
+*.pyc
+.env
+.venv/
