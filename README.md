@@ -1,72 +1,55 @@
-# Prédiction Conforme et Régression Quantile sur le Risque de Crédit
+# Analyse de Données et EDA pour le Risque de Crédit
 
-## Contexte
-Ce projet s’inscrit dans le cadre d’une étude sur la **quantification de l’incertitude** dans les modèles de Machine Learning.  
-L’objectif est d’analyser et de comparer plusieurs méthodes de construction d’intervalles ou d’ensembles de prédiction :
-- **Régression quantile**  
-- **Prédiction conforme pour la régression** (Jackknife+, CV+, Split)  
-- **Prédiction conforme pour la classification** (SCP, FCP)
+Ce projet fournit des outils pour télécharger, explorer et préparer des datasets de régression et classification dans le domaine du risque de crédit.
 
-Ces méthodes sont appliquées au jeu de données **Statlog (German Credit Data)** afin d’évaluer leur performance et leur robustesse dans un contexte de **gestion du risque bancaire**.
+## 🎯 Objectifs
 
----
+- Téléchargement automatique de datasets depuis Kaggle
+- Analyse exploratoire des données (EDA) complète
+- Préprocessing et nettoyage des données
+- Préparation des données pour l'analyse
 
-## Objectifs du projet
-1. Créer des **intervalles de prédiction** via la régression quantile.  
-2. Créer des **intervalles conformes** via les méthodes Jackknife+ et CV+.  
-3. Créer des **ensembles de prédiction conformes** pour la classification du risque de crédit.  
-4. Analyser la couverture, la largeur moyenne des intervalles et la stabilité statistique.
+## 📁 Structure du Projet
 
----
-
-## Jeu de données
-- **Nom :** Statlog (German Credit Data)  
-- **Source :** [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data))  
-- **Taille :** 1000 instances, 20 attributs  
-- **Cible :** `Good` / `Bad` (risque de crédit)
-
-Chaque observation décrit un client bancaire (âge, statut, durée du crédit, montant, emploi, etc.) et indique s’il a bien remboursé son prêt.  
-Le dataset est non temporel, ce qui permet d’appliquer les méthodes conformes sans biais séquentiel.
-
----
-
-## Structure du projet
-
-```sh
-repository
-│
+```
 ├── data/
-│   ├── raw/                # Données brutes téléchargées
-│   └── processed/          # Données prêtes pour modélisation
-│
-├── notebooks/              # Notebooks exploratoires ou démonstratifs
-|   ├── eda_overview.ipynb  # Exploration descriptive initiale
-│
+│   ├── raw/                    # Données brutes téléchargées
+│   └── processed/              # Données nettoyées et préparées
 ├── src/
-│   ├── download_data.py    # Téléchargement + sauvegarde des données
-│   ├── __init__.py
-│
-├── reports/
-│   ├── figures/            # Graphiques de l’EDA
-│   └── summary.md          # Notes d’analyse
-│
-├── requirements.txt        # Librairies Python nécessaires
-├── README.md               # Présentation complète du projet
-└── .gitignore
+│   ├── data_loading.py         # Téléchargement et chargement des données
+│   └── preprocessing.py        # Préparation et nettoyage des données
+├── notebooks/
+│   ├── 01_EDA_Regression.ipynb       # Analyse exploratoire régression
+│   └── 02_EDA_Classification.ipynb   # Analyse exploratoire classification
+├── reports/                    # Résultats et visualisations
+└── eda_overview.ipynb         # Vue d'ensemble EDA originale
 ```
 
----
+## 🚀 Installation et Utilisation
 
-## Environnement Python
-
+### Prérequis
 ```bash
 pip install -r requirements.txt
 ```
 
-## Auteurs
+## 📊 Datasets
+
+Le projet utilise des datasets provenant de Kaggle via `kagglehub`:
+
+- **Régression**: Financial Risk for Loan Approval
+  - Source: https://www.kaggle.com/datasets/lorenzozoppelletto/financial-risk-for-loan-approval
+  - Variables: Données financières pour évaluation du risque de prêt
+  
+- **Classification**: Corporate Credit Rating  
+  - Source: https://www.kaggle.com/datasets/agewerc/corporate-credit-rating
+  - Variables: Données d'entreprises pour classification du rating de crédit
+
+## 👨‍💻 Auteur
 
 - Lesech Erwann
 
----
+Projet académique réalisé dans le cadre d'un module de Processus Stochastiques et Incertitude en Machine Learning.
 
-Projet académique réalisé dans le cadre d’un module de Processus Stochastiques et Incertitude en Machine Learning, avec une approche scientifique et professionnelle.
+## 📄 License
+
+Voir le fichier [LICENSE](LICENSE) pour les détails.

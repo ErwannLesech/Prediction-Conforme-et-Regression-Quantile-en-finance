@@ -1,9 +1,21 @@
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-mapie
-lightgbm
-statsmodels
-ucimlrepo
+# Core dependencies pour l'analyse de données
+numpy>=1.21.0
+pandas>=1.3.0
+
+# Data visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Data loading
+kagglehub>=0.2.0
+
+# Notebook environment
+jupyter>=1.0.0
+ipykernel>=6.0.0
+
+# Basic ML (pour preprocessing uniquement)
+scikit-learn>=1.0.0
+
+# Utilities
+tqdm
+pathlib
