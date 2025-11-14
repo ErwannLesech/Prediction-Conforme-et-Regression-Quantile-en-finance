@@ -1,0 +1,58 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Tâche de régression - Risque d'un client contracteur de crédit}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Présentation du jeu de données et pré-traitement}{3}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Présentation et choix du jeu de données}{3}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Description détaillée des données}{4}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Problématique métier et justification}{5}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Analyse exploratoire des données (EDA)}{5}{subsubsection.2.1.4}%
+\contentsline {subsubsection}{\numberline {2.1.5}Préparation et prétraitement des données}{7}{subsubsection.2.1.5}%
+\contentsline {section}{\numberline {3}Régression Quantile}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Fondements théoriques}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Choix du modèle et justification}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Mise en place et construction des intervalles}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Résultats et interprétation}{9}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Métriques de performance \& résultats}{9}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Analyse comparative}{9}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Plus-value métier}{10}{subsubsection.3.4.3}%
+\contentsline {section}{\numberline {4}Prédiction Conforme pour la Régression}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Fondements théoriques}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Choix des méthodes et justification}{11}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Split Conformal Prediction (SCP)}{11}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Cross-Validation Plus (CV+)}{12}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Pourquoi pas Jackknife+ et Full Conformal Prediction ?}{12}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Choix du modèle de base}{12}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Mise en place du modèle}{12}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Division des données}{12}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Implémentation de Split Conformal Prediction}{13}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Implémentation de Cross-Validation Plus}{13}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}Création des intervalles de prédiction}{14}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Fonction score et propriétés}{14}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Niveau de confiance et choix de $\alpha $}{15}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Construction des intervalles}{15}{subsubsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.5}Évaluation des performances}{15}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Métriques de couverture}{15}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Largeur des intervalles}{16}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}Comparaison avec la régression quantile}{16}{subsubsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.6}Résultats et interprétation}{16}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}Visualisation des intervalles de prédiction}{16}{subsubsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.2}Analyse d'un cas pratique}{17}{subsubsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.3}Plus-value métier}{17}{subsubsection.4.6.3}%
+\contentsline {subsubsection}{\numberline {4.6.4}Limites et perspectives}{18}{subsubsection.4.6.4}%
+\contentsline {section}{\numberline {5}Tâche de classification - Catégorie de note de crédit d'entreprise}{18}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Présentation du jeu de données et pré-traitement}{18}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Présentation et choix du jeu de données}{18}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Description détaillée des données}{19}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Problématique métier et justification}{20}{subsubsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.4}Analyse exploratoire des données (EDA)}{20}{subsubsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.5}Préparation et prétraitement des données}{23}{subsubsection.5.1.5}%
+\contentsline {section}{\numberline {6}Prédiction Conforme pour la Classification}{24}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Fondements théoriques}{24}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Choix du modèle et justification}{24}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Mise en place du modèle}{24}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Création des ensembles de prédiction}{24}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Évaluation des performances}{24}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Résultats et interprétation}{24}{subsection.6.6}%
+\contentsline {section}{\numberline {7}Conclusion et Perspectives}{24}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Synthèse des résultats}{24}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Limites et améliorations possibles}{24}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Perspectives d'application}{24}{subsection.7.3}%

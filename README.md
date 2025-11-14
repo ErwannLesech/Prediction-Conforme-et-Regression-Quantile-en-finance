@@ -90,7 +90,7 @@ chmod 600 ~/.kaggle/kaggle.json
 
 ### Régression : Financial Risk for Loan Approval
 - **Source** : [Kaggle - Financial Risk for Loan Approval](https://www.kaggle.com/datasets/lorenzozoppelletto/financial-risk-for-loan-approval)
-- **Objectif** : Prédire le montant du prêt approuvé
+- **Objectif** : Prédire le risque d'un client qui souhaite contracter un prêt
 - **Variables** : Revenus, historique de crédit, emploi, actifs, dettes
 
 ## Notebooks
