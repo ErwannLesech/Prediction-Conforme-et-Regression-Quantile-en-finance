@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex rapport"] 1763288977 "rapport.aux" "rapport.bbl" "rapport" 1763289213 0
+["bibtex rapport"] 1763289998 "rapport.aux" "rapport.bbl" "rapport" 1763290211 0
   "./references.bib" 1763283880 1212 3f0de0ad7ccf287790fa763937e6ca31 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "rapport.aux" 1763289212 9230 434b8b1e2406a0cc9ca212a339c33264 "pdflatex"
+  "rapport.aux" 1763290211 9230 434b8b1e2406a0cc9ca212a339c33264 "pdflatex"
   (generated)
   "rapport.bbl"
   "rapport.blg"
   (rewritten before read)
-["pdflatex"] 1763289210 "/home/r-one/Documents/epita/stochastique/Prediction-Conforme-et-Regression-Quantile-sur-le-Risque-de-Credit/reports/rapport.tex" "rapport.pdf" "rapport" 1763289213 0
+["pdflatex"] 1763290209 "/home/r-one/Documents/epita/stochastique/Prediction-Conforme-et-Regression-Quantile-sur-le-Risque-de-Credit/reports/rapport.tex" "rapport.pdf" "rapport" 1763290211 0
   "/etc/texmf/web2c/texmf.cnf" 1762931852 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/r-one/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk" 1762933552 20008 4fa2fc7b9700cc206c3fe8d7ae323ef6 ""
   "/home/r-one/.texlive2022/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk" 1762933391 21952 db972c8bd1f9de87a78a3e423c93d818 ""
-  "/home/r-one/Documents/epita/stochastique/Prediction-Conforme-et-Regression-Quantile-sur-le-Risque-de-Credit/reports/rapport.tex" 1763289210 53738 67365ecc2b4b6f80d87eb6f6beaaca69 ""
+  "/home/r-one/Documents/epita/stochastique/Prediction-Conforme-et-Regression-Quantile-sur-le-Risque-de-Credit/reports/rapport.tex" 1763290209 54337 657a95eb8f3642fa5991069f9fa334d1 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplb8c.tfm" 1136768653 1344 220c202046bfb2bd4ed1803ce4cfd5d2 ""
@@ -211,11 +211,11 @@
   "figures/pred_conform_regression_results.png" 1763237011 331315 23061698e5473bca5ffcdf4b010cc943 ""
   "figures/quantile_reg_coverages.png" 1763068916 100160 1a402b3f4e84f8cbff6acb542f323da9 ""
   "figures/regression_most_correlated_bivariee.png" 1762943132 142064 780adef33f0a3e45cb7ab0f399dc8749 ""
-  "rapport.aux" 1763289212 9230 434b8b1e2406a0cc9ca212a339c33264 "pdflatex"
-  "rapport.bbl" 1763288977 1023 f578a35e62c9f65af155c19f0aeef67c "bibtex rapport"
-  "rapport.out" 1763289212 4515 21efb47e264293014f852ef9fcbb9316 "pdflatex"
-  "rapport.tex" 1763289210 53738 67365ecc2b4b6f80d87eb6f6beaaca69 ""
-  "rapport.toc" 1763289212 1864 78cf42830c3e363831ed74720d45437a "pdflatex"
+  "rapport.aux" 1763290211 9230 434b8b1e2406a0cc9ca212a339c33264 "pdflatex"
+  "rapport.bbl" 1763289998 1023 f578a35e62c9f65af155c19f0aeef67c "bibtex rapport"
+  "rapport.out" 1763290211 4515 21efb47e264293014f852ef9fcbb9316 "pdflatex"
+  "rapport.tex" 1763290209 54337 657a95eb8f3642fa5991069f9fa334d1 ""
+  "rapport.toc" 1763290211 1864 78cf42830c3e363831ed74720d45437a "pdflatex"
   (generated)
   "rapport.aux"
   "rapport.log"

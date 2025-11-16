@@ -1,10 +1,10 @@
-# Prédiction Conforme et Régression Quantile sur le Risque de Crédit
+# Prédiction Conforme et Régression Quantile en Finance
 
 Projet d'analyse et de modélisation du risque de crédit utilisant des techniques avancées de machine learning avec quantification de l'incertitude : **Conformal Prediction** et **Régression Quantile**.
 
 ## Introduction
 
-### Pourquoi le secteur financier et le risque de crédit ?
+### Pourquoi le secteur financier ?
 
 Le secteur financier est au cœur du fonctionnement de notre économie mondiale. Il facilite l'allocation du capital, finance l'innovation, soutient les entreprises et permet aux individus de réaliser leurs projets. L'évaluation du risque de crédit est l'une des fonctions les plus critiques de ce système : elle détermine qui peut emprunter, à quelles conditions, et avec quel niveau de risque pour le prêteur.
 
