@@ -47,8 +47,7 @@ Ce projet académique explore l'application de méthodes statistiques modernes p
 ├── src/
 │   ├── data_loading.py                   # Téléchargement et chargement des données
 │   ├── preprocessing.py                  # Prétraitement et feature engineering
-│   └── Application_Professionnelle_Credit_Classification.py
-│                                         # Application de production
+│
 ├── notebooks/
 │   ├── EDA_Classification.ipynb          # Exploration des données de classification
 │   ├── EDA_Regression.ipynb              # Exploration des données de régression
@@ -58,7 +57,8 @@ Ce projet académique explore l'application de méthodes statistiques modernes p
 │   │                                     # CP pour prédiction des montants
 │   └── Regression_Quantile.ipynb         # Régression quantile comparative
 └── reports/
-    └── figures/                          # Visualisations et graphiques
+│   ├── figures/                          # Visualisations et graphiques
+│   └── rapport.pdf                       # Rapport de projet
 ```
 
 ## Installation
