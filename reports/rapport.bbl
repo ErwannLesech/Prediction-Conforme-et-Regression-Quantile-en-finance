@@ -1,10 +1,31 @@
 \begin{thebibliography}{1}
 
-\bibitem{lei2014distributionfreepredictiveinferenceregression}
-Jing Lei, Max G'Sell, Alessandro Rinaldo, Ryan~J. Tibshirani, and Larry
-  Wasserman.
-\newblock Distribution-free predictive inference for regression.
-\newblock {\em Journal of the American Statistical Association},
-  113(523):1094--1111, 2018.
+\bibitem{Agewerc_CorporateCreditRating}
+{Agewerc (Kaggle)}.
+\newblock Corporate credit rating.
+\newblock
+  \url{https://www.kaggle.com/datasets/agewerc/corporate-credit-rating}.
+\newblock Kaggle dataset, consulté le \today.
+
+\bibitem{BanqueDeFrance_BaleIII_2025}
+{Banque de France}.
+\newblock L'accord de bâle iii.
+\newblock
+  \url{https://www.banque-france.fr/fr/publications-et-statistiques/publications/laccord-de-bale-iii},
+  2025.
+\newblock Mise à jour le 23 avril 2025, PDF disponible (668,18 Ko).
+
+\bibitem{Zoppelletto_FinancialRiskLoanApproval}
+{Lorenzo Zoppelletto (Kaggle)}.
+\newblock Financial risk for loan approval.
+\newblock
+  \url{https://www.kaggle.com/datasets/lorenzozoppelletto/financial-risk-for-loan-approval}.
+\newblock Kaggle dataset, consulté le \today.
+
+\bibitem{Vovk2012CrossConformalPredictors}
+Vladimir Vovk.
+\newblock Cross‑conformal predictors.
+\newblock {\em arXiv preprint arXiv:1208.0806}, 2012.
+\newblock Version v1, 3 August 2012.
 
 \end{thebibliography}

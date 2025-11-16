@@ -102,36 +102,13 @@ chmod 600 ~/.kaggle/kaggle.json
 ### Modélisation
 - `Prediction_Conforme_Classification.ipynb` : CP pour classification des ratings
 - `Prediction_Conforme_Regression.ipynb` : CP pour prédiction des montants de prêt
-- `Regression_Quantile.ipynb` : Régression quantile et comparaison avec CP
-
-## Application Professionnelle
-
-Le module `Application_Professionnelle_Credit_Classification.py` fournit un système de production pour l'évaluation du risque de crédit :
-
-**Fonctionnalités** :
-- Prédiction conforme du rating de crédit avec garanties statistiques
-- Évaluation interactive d'entreprises individuelles
-- Traitement par batch de multiples entreprises
-- Calcul automatique de ratios financiers
-- Interface utilisateur simple
-
-**Utilisation** :
-```python
-from src.Application_Professionnelle_Credit_Classification import CreditRatingPredictor
-
-# Charger le modèle calibré
-predictor = CreditRatingPredictor(scp_model, label_encoder, feature_encoders)
-
-# Évaluer une entreprise
-company_data = {...}  # Données financières
-prediction_set, confidence = predictor.predict_with_confidence(company_data)
-```
+- `Regression_Quantile.ipynb` : Mise en place de la régression quantile
 
 ## Auteur
 
 **Lesech Erwann**
 
-Projet académique réalisé dans le cadre du module de **Processus Stochastiques et Incertitude en Machine Learning** à EPITA.
+Projet académique réalisé dans le cadre du module de **Stochastiques** à EPITA.
 
 ## License
 

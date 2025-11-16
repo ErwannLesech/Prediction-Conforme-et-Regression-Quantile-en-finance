@@ -1,19 +1,19 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
 \contentsline {section}{\numberline {2}Tâche de régression - Risque d'un client contracteur de crédit}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Présentation du jeu de données et pré-traitement}{2}{subsection.2.1}%
-\contentsline {section}{\numberline {3}Régression Quantile}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Fondements théoriques}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Choix du modèle et justification}{7}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Mise en place et construction des intervalles}{7}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Résultats et interprétation}{7}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Prédiction Conforme pour la Régression}{9}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Choix des méthodes et justification}{9}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Mise en place des modèles}{10}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Résultats et interprétation}{11}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Tâche de classification - Catégorie de note de crédit d'entreprise}{13}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Présentation du jeu de données et pré-traitement}{13}{subsection.5.1}%
-\contentsline {section}{\numberline {6}Prédiction Conforme pour la Classification}{18}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Choix des méthodes et justification}{18}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Mise en place des modèles}{18}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Résultats et interprétation}{19}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Conclusion}{21}{section.7}%
+\contentsline {section}{\numberline {3}Régression Quantile}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Fondements théoriques}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Choix du modèle et justification}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Mise en place et construction des intervalles}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Résultats et interprétation}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Prédiction Conforme pour la Régression}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Choix des méthodes et justification}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Mise en place des modèles}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Résultats et interprétation}{10}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Tâche de classification - Catégorie de note de crédit d'entreprise}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Présentation du jeu de données et pré-traitement}{12}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Prédiction Conforme pour la Classification}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Choix des méthodes et justification}{16}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Mise en place des modèles}{17}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Résultats et interprétation}{17}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}%

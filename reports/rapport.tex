@@ -100,11 +100,11 @@
     
     \subsection*{Problématique du secteur financier}
     
-    Le secteur financier est un exemple typique où la prise de décision repose sur des modèles prédictifs sensibles à l’incertitude. Les prévisions de risque, les notations de crédit ou l’évaluation des performances d’entreprises reposent sur des données volatiles et complexes, souvent influencées par des facteurs externes difficiles à anticiper. Dans un tel contexte, un modèle classique fournissant une seule prédiction numérique ou catégorielle peut s’avérer insuffisant, voire trompeur.
+    Le secteur financier est un exemple typique où la prise de décision repose sur des modèles prédictifs sensibles à l'incertitude. Les prévisions de risque, les notations de crédit ou l'évaluation des performances d'entreprises reposent sur des données volatiles et complexes, souvent influencées par des facteurs externes difficiles à anticiper. Dans un tel contexte, un modèle classique fournissant une seule prédiction numérique ou catégorielle peut s'avérer insuffisant, voire trompeur.
     
-    L’intégration de la prédiction conforme dans ce domaine permet de mieux maîtriser la confiance associée aux estimations, qu’il s’agisse d’évaluer \textbf{la solvabilité d’une entreprise} ou \textbf{le risque financier d’un client}.
+    L'intégration de la prédiction conforme dans ce domaine permet de mieux maîtriser la confiance associée aux estimations, qu'il s'agisse d'évaluer \textbf{la solvabilité d'une entreprise} ou \textbf{le risque financier d'un client}. Dans le contexte réglementaire, les accords de Bâle III~\cite{BanqueDeFrance_BaleIII_2025} imposent des exigences strictes en matière de gestion du risque de crédit et de quantification de l'incertitude, rendant ces approches particulièrement pertinentes pour le secteur bancaire.
     
-    La suite de ce rapport s’appuie sur deux ensembles de données issus du domaine financier, permettant d’illustrer l’apport concret de la prédiction conforme dans des contextes réels de classification et de régression.
+    La suite de ce rapport s'appuie sur deux ensembles de données issus du domaine financier, permettant d'illustrer l'apport concret de la prédiction conforme dans des contextes réels de régression puis de classification.
 
     \section{Tâche de régression - Risque d'un client contracteur de crédit}
 
@@ -112,15 +112,15 @@
 
     \subsubsection*{Présentation et choix du jeu de données}
     
-    Le jeu de données \textit{Financial Risk for Loan Approval}\footnote{\url{https://www.kaggle.com/datasets/lorenzozoppelletto/financial-risk-for-loan-approval}} contient 20~000 observations de demandes de crédit avec 36 variables décrivant les caractéristiques financières et personnelles des emprunteurs. La variable cible \texttt{RiskScore} représente un score de risque continu (28.8 à 84.0), rendant ce dataset particulièrement adapté aux techniques de régression quantile et de prédiction conforme.
+    Le jeu de données \textit{Financial Risk for Loan Approval}~\cite{Zoppelletto_FinancialRiskLoanApproval} contient 20~000 observations de demandes de crédit avec 36 variables décrivant les caractéristiques financières et personnelles des emprunteurs. La variable cible \texttt{RiskScore} représente un score de risque continu (28.8 à 84.0), rendant ce dataset adapté à une tâche de régression.
     
-    Ce dataset présente plusieurs avantages pour notre étude. Avec plus de 10~000 observations disponibles pour l'entraînement après un split train/test classique, nous disposons d'un ensemble de calibration suffisamment large pour garantir la validité statistique de la prédiction conforme. La taille du dataset assure également une estimation robuste des différents quantiles en régression quantile. Par ailleurs, l'absence de structure temporelle dans les données et l'indépendance entre les observations (chaque demande de crédit correspond à un client distinct) satisfont l'hypothèse d'échangeabilité nécessaire pour les garanties théoriques de la prédiction conforme. Enfin, le caractère synthétique du dataset élimine les contraintes de confidentialité tout en préservant des distributions réalistes de variables financières, permettant une analyse approfondie sans limitation d'accès aux données.
+    Ce dataset présente plusieurs avantages pour notre étude. Avec plus de 10~000 observations disponibles pour l'entraînement après un split train/test classique, nous disposons d'un ensemble de calibration suffisamment large pour garantir la validité statistique de la prédiction conforme. La taille du dataset assure également une estimation relativement juste des différents quantiles en régression quantile. Par ailleurs, l'absence de structure temporelle dans les données et l'indépendance entre les observations (chaque demande de crédit correspond à un client distinct) satisfont l'hypothèse d'échangeabilité nécessaire pour les garanties théoriques de la prédiction conforme. Enfin, le caractère synthétique du dataset élimine les contraintes de confidentialité tout en préservant des distributions réalistes de variables financières, permettant une analyse approfondie sans limitation d'accès aux données.
     
     \subsubsection*{Description détaillée des données}
     
-    Le dataset comprend 20~000 observations réparties sur 36 variables, sans aucune valeur manquante. Les variables se décomposent en 29 variables numériques, 6 variables catégorielles et 1 variable temporelle (\texttt{ApplicationDate}) qui sera exclue de l'analyse.
+    Le dataset comprend 20~000 observations réparties sur 36 variables, sans aucune valeur manquante. Les variables se décomposent en 29 variables numériques, 6 variables catégorielles et 1 variable temporelle (\texttt{ApplicationDate}) qui sera exclue de l'analyse sans perte d'information étant donné qu'elle est synthétique, sans valeur prédictive réelle.
     
-    La variable cible \texttt{RiskScore} est une variable continue représentant le niveau de risque associé à chaque demande de crédit. Elle s'étend de 28.8 à 84.0 avec une moyenne de 50.8 et un écart-type de 7.8. La distribution présente une légère asymétrie à droite, avec des quartiles à Q1=46, Q2=52 et Q3=56, suggérant une concentration des scores autour de la médiane avec quelques valeurs extrêmes vers les risques élevés.
+    La variable cible \texttt{RiskScore} est une variable continue représentant le niveau de risque associé à chaque demande de crédit. Elle s'étend de 28.8 à 84.0 avec une moyenne de 50.8 et un écart-type de 7.8. La distribution présente une légère asymétrie, avec les quartiles suivants : Q1=46, Q2=52 et Q3=56, suggérant une concentration des scores autour de la médiane avec quelques valeurs extrêmes vers les risques élevés.
     
     Les 35 variables explicatives couvrent l'ensemble des dimensions pertinentes pour l'évaluation du risque de crédit, comme synthétisé dans le tableau ci-dessous.
     
@@ -160,13 +160,12 @@
     
     Considérons le scénario d'un conseiller bancaire face à une demande de crédit. Un modèle de machine learning classique lui fournirait une prédiction unique : « Ce client a un score de risque estimé à 48 ». Cette information, bien qu'utile, reste insuffisante pour prendre une décision éclairée. Le conseiller ne dispose d'aucune indication sur la fiabilité de cette prédiction. S'agit-il d'un profil typique, bien compris par le modèle, ou d'un cas atypique où l'incertitude est élevée ?
     
-    La \textbf{régression quantile} enrichit cette analyse en produisant de intervalles. Si l'intervalle est étroit, le profil est bien caractérisé et une décision automatisée peut être envisagée. Si l'intervalle est large, cela signale une forte variabilité du risque et justifie un examen approfondi. Cette information permet également d'adapter les conditions du prêt : un client au quantile élevé pourrait se voir proposer un taux d'intérêt majoré ou des garanties supplémentaires.
-    
-    La \textbf{prédiction conforme} va plus loin en fournissant une garantie statistique : « Avec 90\% de confiance, le véritable score de risque se situe dans l'intervalle [45, 51] ». Contrairement à un modèle classique qui ne contrôle pas son taux d'erreur, la prédiction conforme garantit que 90\% des clients auront leur score réel couvert par l'intervalle prédit. Cette propriété est cruciale dans un contexte réglementaire où les institutions financières doivent justifier leurs décisions et maîtriser leur exposition au risque. Un intervalle trop large pour un client donné peut déclencher une analyse manuelle, tandis qu'un intervalle étroit valide la confiance du modèle et accélère le processus d'approbation.
-        
+    La \textbf{régression quantile} permet d'estimer différents quantiles de la variable cible conditionnellement aux caractéristiques du client. En combinant les quantiles 5\% et 95\%, on peut construire un intervalle reflétant l'incertitude du modèle. Un intervalle étroit indique que, selon le modèle, le profil du client est bien caractérisé ; un intervalle large suggère une forte variabilité ou un manque d'information.
+
+    La \textbf{prédiction conforme}, à l'inverse, produit des intervalles prédictifs assortis d'une garantie formelle de couverture. Par exemple : « Avec un niveau de confiance de 90 \%, l'intervalle prédit couvrira la valeur réelle pour 90 \% des nouveaux clients ». Dans notre scénario bancaire, cette garantie statistique permet au conseiller de justifier objectivement sa décision auprès de la hiérarchie et des instances réglementaires, tout en adaptant les conditions du prêt (taux d'intérêt, montant, garanties) selon la largeur et la position de l'intervalle.
     \subsubsection*{Analyse exploratoire des données (EDA)}
     
-    L'analyse exploratoire révèle plusieurs caractéristiques importantes du dataset. La distribution de la variable cible \texttt{RiskScore} présente une légère asymétrie à droite avec quelques valeurs aberrantes au-delà de 70, suggérant l'existence de profils à très haut risque peu fréquents mais à surveiller (Figure~\ref{fig:eda_riskscore_dist}).
+    L'analyse exploratoire révèle plusieurs caractéristiques importantes du dataset. La distribution de la variable cible \texttt{RiskScore} présente une légère asymétrie à droite avec quelques valeurs aberrantes au-delà de 65, suggérant l'existence de profils à très haut risque peu fréquents (Figure~\ref{fig:eda_riskscore_dist}).
     
     \begin{figure}[H]
         \centering
@@ -194,16 +193,16 @@
         \end{minipage}
     \end{figure}
     
-    \begin{minipage}[t]{0.55\textwidth}
-        \vspace{0pt}
+    \noindent\begin{minipage}[t]{0.40\textwidth}
+        \vspace{2cm}
         Enfin, le graphique des corrélations avec la cible (Figure~\ref{fig:eda_feature_importance}) permet d'identifier les variables les plus prédictives. Hormis \texttt{LoanApproved} qui est exclue de l'analyse, on retrouve à nouveau la variable \texttt{MonthlyIncome} (-0.487), ainsi que \texttt{AnnualIncome} (-0.483) et \texttt{BankruptcyHistory} (0.378) comme les features les plus corrélées à \texttt{RiskScore}.
     \end{minipage}%
     \hfill%
-    \begin{minipage}[t]{0.42\textwidth}
+    \begin{minipage}[t]{0.59\textwidth}
         \vspace{0pt}
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.7\textwidth]{figures/matrice_corr_cible_regression.png}
+            \includegraphics[width=0.55\textwidth]{figures/matrice_corr_cible_regression.png}
             \caption{Corrélations des features avec la variable cible RiskScore}
             \label{fig:eda_feature_importance}
         \end{figure}
@@ -211,9 +210,9 @@
     
     \subsubsection*{Préparation et prétraitement des données}
     
-    Le prétraitement des données s'effectue en plusieurs étapes successives. La variable \texttt{ApplicationDate}, représentant une série temporelle synthétique sans valeur prédictive, est d'abord supprimée. De même, la variable \texttt{LoanApproved}, qui correspond à un label binaire d'approbation de prêt et constitue donc une tâche de classification alternative, est exclue de l'analyse pour se concentrer uniquement sur la prédiction du score de risque continu.
+    Le prétraitement des données s'effectue en plusieurs étapes successives. La variable \texttt{ApplicationDate}, représentant une série temporelle synthétique sans valeur prédictive, est supprimée. De même, la variable \texttt{LoanApproved}, qui correspond à un label binaire d'approbation de prêt et constitue donc une tâche de classification alternative, est exclue de l'analyse pour se concentrer uniquement sur la prédiction du score de risque continu.
     
-    Les variables catégorielles (\texttt{EmploymentStatus}, \texttt{EducationLevel}, \texttt{MaritalStatus}, \texttt{LoanPurpose}, \texttt{HomeOwnershipStatus}) sont ensuite encodées en utilisant un encodage one-hot, créant des variables binaires pour chaque modalité tout en supprimant une modalité de référence pour éviter la multicolinéarité. Les variables numériques sont normalisées par standardisation (moyenne 0, écart-type 1) afin d'homogénéiser les échelles et d'améliorer la convergence des algorithmes d'apprentissage.
+    Les variables catégorielles (\texttt{EmploymentStatus}, \texttt{EducationLevel}, \texttt{MaritalStatus}, \texttt{LoanPurpose}, \texttt{HomeOwnershipStatus}) sont ensuite encodées en utilisant un encodage one-hot, créant des variables binaires en évitant d'ordonnancer ces variables. Les variables numériques sont normalisées par standardisation afin d'homogénéiser les échelles et d'améliorer la convergence des algorithmes d'apprentissage de ML.
 
     \newpage
 
@@ -221,17 +220,14 @@
     
     \subsection{Fondements théoriques}
     
-    La régression quantile modélise les quantiles conditionnels de la variable cible plutôt que sa moyenne. Pour un quantile $\tau \in (0,1)$, elle résout :
+    La régression quantile modélise les quantiles conditionnels de la variable cible plutôt que sa moyenne. Contrairement à la régression classique qui estime l'espérance conditionnelle, la régression quantile permet d'estimer n'importe quel quantile de la distribution conditionnelle.
     
-    $$\hat{\beta}_\tau = \arg\min_{\beta} \sum_{i=1}^n \rho_\tau(y_i - x_i^T\beta)$$
+    Dans le modèle de régression quantile standard, c'est à dire linéaire, on estime un quantile $\tau \in (0,1)$ de la variable cible via le problème d'optimisation suivant :
     
-    où $\rho_\tau(u)$ est la fonction de perte quantile (pinball loss) définie par :
+    $$\hat{q}_\tau(Y) = \arg\min_{b} \frac{1}{N} \sum_{i=1}^n \rho_\tau(Y_i - b)$$
     
-    $$\rho_\tau(u) = u(\tau - \mathbf{1}_{u < 0}) = \begin{cases} 
-    \tau u & \text{si } u \geq 0 \\
-    (\tau - 1) u & \text{si } u < 0
-    \end{cases}$$
-        
+    où $\rho_\tau(u) = (\tau - \mathbb{1}_{\mathbb{R}^-}(u))u$ est la fonction de perte quantile, également appelée \textbf{pinball loss}.
+
     \subsection{Choix du modèle et justification}
     
     Nous avons implémenté une régression quantile linéaire via \texttt{QuantileRegressor} de scikit-learn.
@@ -240,7 +236,7 @@
     
     \subsection{Mise en place et construction des intervalles}
     
-    Le prétraitement suit le protocole établi : encodage one-hot des catégorielles et standardisation des numériques. Le split train/test (67\%/33\%) garantit une évaluation robuste sur 6~600 observations.
+    Le prétraitement suit le protocole établi : encodage one-hot des catégorielles et standardisation des numériques. Le split train/test (67\%/33\%) permet une évaluation sur 6~600 observations.
     
     Pour un niveau de confiance $1-\beta = 90\%$ ($\beta=0.1$), trois régressions quantiles sont entraînées par configuration : $Q_{0.05}$ (borne inférieure), $Q_{0.50}$ (médiane conditionnelle) et $Q_{0.95}$ (borne supérieure). L'intervalle de prédiction est construit comme $[Q_{0.05}(X_{new}), Q_{0.95}(X_{new})]$, devant théoriquement contenir 90\% des observations.
     
@@ -257,7 +253,7 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{figures/quantile_reg_coverages.png}
+        \includegraphics[width=0.9\textwidth]{figures/quantile_reg_coverages.png}
         \caption{Taux de couverture empirique des quatre modèles de régression quantile}
         \label{fig:quantile_coverage}
     \end{figure}
@@ -300,7 +296,7 @@
         \label{fig:quantile_reg_model1}
     \end{figure}
 
-    Tous les modèles affichent une couverture proche de 90\% avec une faible variabilité ($\pm$ 0.35-0.37\%), démontrant la fiabilité de la régression quantile pour construire des intervalles bien calibrés.
+    Tous les modèles affichent une couverture proche de 90\% avec une faible variabilité ($\pm$ 0.35-0.37\%), démontrant la fiabilité de la régression quantile pour construire des intervalles bien calibrés dès lors que le dataset est suffisamment grand (> 10~000 observations).
     
     \subsubsection*{Plus-value métier}
     
@@ -316,29 +312,28 @@
     
     \subsubsection*{Split Conformal Prediction (SCP)}
     
-    SCP est la méthode la plus simple et directe. Elle divise les données en trois ensembles disjoints : train (50\%), calibration (40\%) et test (10\%). Le modèle est entraîné une fois sur le train set, puis calibré sur le calibration set pour calculer le quantile $\hat{q}$ des scores de non-conformité. Cette approche est efficace avec des datasets volumineux (> 10~000 obs.) car le split ne réduit pas significativement la taille effective. Son avantage est sa rapidité (un seul entraînement) et sa simplicité d'implémentation.
+    SCP est la méthode la plus simple et directe. Elle divise les données en trois ensembles disjoints : train (50\%), calibration (40\%) et test (10\%). Le modèle est entraîné une fois sur le train set, puis calibré sur le calibration set pour calculer le quantile $\hat{q}$ des scores de conformité. Cette approche est efficace avec des datasets volumineux (> 10~000 obs.) car le split ne réduit pas significativement la taille effective. Son avantage est sa rapidité (un seul entraînement) et sa simplicité d'implémentation.
     
     \subsubsection*{Cross-Validation Plus (CV+)}
     
-    CV+ exploite mieux les données via validation croisée K-folds. Elle entraîne $K$ modèles (ici $K=3$) sur des folds différents et collecte les scores de non-conformité sur les prédictions out-of-sample de chaque fold. Le quantile est calculé sur l'ensemble agrégé de ces scores. Pour la prédiction finale, les $K$ modèles sont moyennés, réduisant la variance. Cette approche est plus robuste sur datasets moyens (2~000–10~000 obs.) en exploitant mieux les données disponibles, au prix d'un coût $K$ fois supérieur.
+    CV+ exploite mieux les données via validation croisée K-folds. Elle entraîne $K$ modèles (ici $K=3$) sur des folds différents et collecte les scores de conformité sur les prédictions out-of-sample de chaque fold. Le quantile est calculé sur l'ensemble agrégé de ces scores. Pour la prédiction finale, les $K$ modèles sont moyennés, réduisant la variance. Cette approche est meilleure sur datasets moyens en exploitant mieux les données disponibles, au prix d'un coût $K$ fois supérieur.
     
     \subsubsection*{Pourquoi pas Jackknife+ et Full Conformal Prediction ?}
     
+    \hspace{0.5cm}
     \textbf{Jackknife+} nécessite $n$ entraînements en leave-one-out (20~000 sur notre dataset), soit un coût prohibitif sans gain pratique significatif.
     
-    \textbf{Full Conformal Prediction (FCP)} requiert de tester toutes les valeurs candidates $y_{new}$ en réentraînant le modèle à chaque fois, rendant la méthode inapplicable en production.
-    
-    \textbf{SCP} et \textbf{CV+} offrent le meilleur compromis rigueur/applicabilité pour l'évaluation du risque de crédit.
-    
+    \textbf{Full Conformal Prediction (FCP)} requiert de tester toutes les valeurs candidates $y_{new}$ en réentraînant le modèle à chaque fois, rendant à nouveau son cout computationnel trop important pour ma machine.
+        
     \subsection{Mise en place des modèles}
     
     \subsubsection*{Division des données et prétraitement}
     
-    Le preprocessing suit le protocole standard : encodage one-hot des catégorielles et standardisation des numériques. Pour SCP, split en trois ensembles disjoints : train (50\%, 10~000 obs.), calibration (40\%, 8~000 obs.) et test (10\%, 2~000 obs.). Pour CV+, fusion train+calibration (90\%, 18~000 obs.) utilisée pour validation croisée 3-folds, avec test set identique pour comparaison équitable.
+    Le preprocessing suit le protocole standard expliqué plus haut : encodage one-hot des catégorielles et standardisation des numériques. Pour SCP, split en trois ensembles disjoints : train (50\%, 10~000 obs.), calibration (40\%, 8~000 obs.) et test (10\%, 2~000 obs.). Pour CV+, fusion train+calibration (90\%, 18~000 obs.) utilisée pour validation croisée 3-folds, avec test set identique pour comparaison équitable.
     
     \subsubsection*{Choix de l'algorithme ML de base}
     
-    Nous avons utilisé une \textbf{régression Ridge} (\texttt{Ridge}, $\alpha=1.0$) comme modèle de base $\hat{f}$. Ridge offre stabilité via régularisation L2, évitant le surapprentissage tout en restant interprétable. Sa rapidité d'entraînement est cruciale pour CV+. Des modèles plus complexes (\texttt{RandomForest}, \texttt{GradientBoosting}) auraient de meilleures performances mais un temps d'entraînement trop long pour cette étude.
+    Nous avons utilisé une \textbf{régression Ridge} (\texttt{Ridge}, $\alpha=1.0$) comme modèle de base $\hat{f}$. Ridge offre une stabilité via régularisation L2, évitant le surapprentissage tout en restant interprétable. Sa rapidité d'entraînement est cruciale pour CV+. Des modèles plus complexes (\texttt{RandomForest}, \texttt{GradientBoosting}) auraient de meilleures performances mais un temps d'entraînement trop long pour cette étude.
         
     \subsubsection*{Principe commun : score de conformité}
     
@@ -346,7 +341,7 @@
     
     $$S(X_i, y_i) = |y_i - \hat{f}(X_i)|$$
     
-    Nous utilisons l'erreur absolue (L1), symétrique et robuste aux outliers. Sur l'ensemble de calibration (ou via CV), on calcule les scores $S_1, \ldots, S_n$ et leur quantile ajusté :
+    Nous utilisons l'erreur absolue (L1), symétrique et robuste aux outliers par rapport à l'erreur quadratique. Sur l'ensemble de calibration (ou via CV), on calcule les scores $S_1, \ldots, S_n$ et leur quantile ajusté :
     
     $$\hat{q} = \text{Quantile}\left(S_1, \ldots, S_n; \frac{\lceil (n+1)(1-\alpha) \rceil}{n}\right)$$
     
@@ -415,9 +410,9 @@
     
     \subsubsection*{Présentation et choix du jeu de données}
     
-    Le jeu de données \textit{Corporate Credit Rating}\footnote{\url{https://www.kaggle.com/datasets/agewerc/corporate-credit-rating}} contient 2~031 observations de notations de crédit d'entreprises américaines avec 31 variables décrivant leurs performances financières et opérationnelles. La variable cible \texttt{Rating} représente une notation de crédit catégorielle (10 classes : AAA, AA, A, BBB, BB, B, CCC, CC, C, D), rendant ce dataset particulièrement adapté aux techniques de prédiction conforme pour la classification.
+    Le jeu de données \textit{Corporate Credit Rating}~\cite{Agewerc_CorporateCreditRating} contient 2~031 observations de notations de crédit d'entreprises américaines avec 31 variables décrivant leurs performances financières et opérationnelles. La variable cible \texttt{Rating} représente une notation de crédit catégorielle (10 classes : AAA, AA, A, BBB, BB, B, CCC, CC, C, D), rendant ce dataset adapté à la classification multi-classes.
     
-    Ce dataset présente plusieurs avantages pour notre étude. Bien que plus petit que le dataset de régression, il offre suffisamment d'observations pour garantir la validité statistique de la prédiction conforme après calibration (> 1000 données) et peut nous permettre éventuellement d'essayer d'appliquer des algorithmes permettant un ensemble de calibration réduit. La présence de notations issues de quatre agences de notation réputées (Standard \& Poor's, Moody's, Fitch Ratings, Egan-Jones) assure la crédibilité et la cohérence des labels. L'absence de structure temporelle dans les données et l'indépendance entre les observations (chaque notation correspond à une entreprise à un instant donné) satisfont l'hypothèse d'échangeabilité requise pour les garanties théoriques de la prédiction conforme. Enfin, le dataset couvre 25 secteurs d'activité différents, offrant une diversité sectorielle représentative du tissu économique américain.
+    Ce dataset présente plusieurs avantages pour notre étude. Bien que plus petit que le dataset de régression, il devrait nous offrir suffisamment d'observations pour garantir des résultats correct avec un ensemble de calibration proche des 1000 données (supposé entre 88\% et 92\% de confiance) et peut nous permettre éventuellement d'essayer d'appliquer des algorithmes permettant un ensemble de calibration réduit. La présence de notations issues de quatre agences de notation réputées (Standard \& Poor's, Moody's, Fitch Ratings, Egan-Jones) assure la crédibilité et la cohérence des labels. L'absence de structure temporelle dans les données et l'indépendance entre les observations (chaque notation correspond à une entreprise à un instant donné) satisfont l'hypothèse d'échangeabilité requise pour les garanties théoriques de la prédiction conforme. Enfin, le dataset couvre 25 secteurs d'activité différents, offrant une diversité sectorielle représentative du tissu économique américain.
     
     \subsubsection*{Description détaillée des données}
     
@@ -425,8 +420,8 @@
     
     La variable cible \texttt{Rating} est une variable catégorielle ordinale représentant la notation de crédit de l'entreprise selon l'échelle traditionnelle. Elle comporte 10 classes allant de AAA (meilleure qualité de crédit) à D (défaut de paiement). La distribution initiale présente un déséquilibre important, avec une forte concentration sur les classes A (671 observations, 33.0\%) et BBB (624 observations, 30.7\%), tandis que certaines classes sont gravement sous-représentées : D (1 observation), C (2 observations), CC (8 observations) et AAA (52 observations). Ce déséquilibre, avec un ratio maximum/minimum de 671:1, nécessite un regroupement des classes pour garantir la robustesse des modèles.
     
-    Les 28 variables explicatives numériques couvrent l'ensemble des dimensions pertinentes pour l'évaluation du risque de crédit d'entreprise, comme synthétisé dans le tableau ci-dessous.
-    
+    Les 28 variables explicatives numériques couvrent l'ensemble des dimensions pertinentes pour l'évaluation du risque de crédit d'entreprise, comme synthétisé dans le tableau~\ref{tab:variables_classification}.
+
     \begin{table}[h]
     \centering
     \small
@@ -449,6 +444,7 @@
     \hline
     \end{tabular}
     \caption{Synthèse des variables du dataset de classification}
+    \label{tab:variables_classification}
     \end{table}
     
     Les deux variables catégorielles complémentaires sont \texttt{Sector} (25 secteurs : Technology, Health Care, Consumer Durables, etc.) et \texttt{Rating Agency Name} (4 agences : Standard \& Poor's, Moody's, Fitch Ratings, Egan-Jones).
@@ -457,11 +453,11 @@
     
     Considérons le scénario d'un analyste financier chargé d'évaluer le risque de crédit d'une entreprise pour décider d'un investissement obligataire. Un modèle de classification classique lui fournirait une prédiction unique : « Cette entreprise est notée BBB ». Cette information, bien qu'utile, reste insuffisante pour une prise de décision éclairée. L'analyste ne dispose d'aucune indication sur la confiance du modèle dans cette prédiction. S'agit-il d'un profil clairement BBB, ou l'entreprise se situe-t-elle à la frontière entre Investment Grade et Speculative Grade ?
     
-    La \textbf{prédiction conforme pour la classification} enrichit radicalement cette analyse en produisant des \textbf{ensembles de prédiction}. Au lieu d'une classe unique, le modèle pourrait indiquer : « Avec 90\% de confiance, cette entreprise appartient à l'ensemble \{BBB, BB\} ». Cette information est beaucoup plus riche pour la décision. Un ensemble contenant uniquement BBB signale une prédiction très confiante et permet une décision rapide. Un ensemble \{BBB, BB\} indique une entreprise à la frontière Investment Grade/Speculative, justifiant une analyse approfondie. Un ensemble large \{A, BBB, BB\} révèle une forte incertitude et nécessite une due diligence complète avant investissement.
+    La \textbf{prédiction conforme pour la classification} enrichit radicalement cette analyse en produisant des \textbf{ensembles de prédiction}. Au lieu d'une classe unique, le modèle pourrait indiquer : « Avec 90\% de confiance, cette entreprise appartient à l'ensemble \{BBB, BB\} ». Cette information est beaucoup plus riche pour la décision. Un ensemble contenant uniquement BBB signale une prédiction très confiante et permet une décision rapide. Un ensemble \{BBB, BB\} indique une entreprise à la frontière Investment Grade/Speculative, justifiant une analyse approfondie. Un ensemble large \{A, BBB, BB\} révèle une forte incertitude et nécessite une analyse complémentaire avant investissement.
     
-    Dans le contexte réglementaire bancaire, cette approche est particulièrement pertinente. Les accords de Bâle imposent des exigences de fonds propres différentes selon la catégorie de crédit. Une entreprise classée Investment Grade (AAA à BBB) bénéficie de conditions favorables, tandis qu'une notation Speculative Grade (BB et inférieur) entraîne des exigences accrues. La prédiction conforme offre donc une garantie statistique contrôlée : sur 100 prédictions avec un niveau de confiance de 90\%, au moins 90 contiendront la vraie classe. Cette propriété est cruciale pour justifier les décisions d'investissement auprès des régulateurs et des comités de risque.
+    Dans le contexte réglementaire bancaire, cette approche est particulièrement pertinente. Les accords de Bâle III~\cite{BanqueDeFrance_BaleIII_2025} imposent des exigences de fonds propres différentes selon la catégorie de crédit. Une entreprise classée Investment Grade (AAA à BBB) bénéficie de conditions favorables, tandis qu'une notation Speculative Grade (BB et inférieur) entraîne des exigences accrues. La prédiction conforme offre donc une garantie statistique contrôlée : sur 100 prédictions avec un niveau de confiance de 90\%, au moins 90 contiendront la vraie classe. Cette propriété est cruciale pour justifier les décisions d'investissement auprès des régulateurs et des comités de risque.
     
-    De plus, le regroupement des classes en 6 catégories cohérentes (IG\_HIGH, IG\_MED, IG\_LOW pour Investment Grade ; SPEC\_HIGH, SPEC\_MED, SPEC\_LOW pour Speculative Grade) aligne parfaitement l'approche technique avec les pratiques métier, où la distinction majeure se fait entre obligations investissables et spécu\-latives.
+    De plus, le regroupement des classes en 6 catégories cohérentes (IG\_HIGH, IG\_MED, IG\_LOW pour Investment Grade ; SPEC\_HIGH, SPEC\_MED, SPEC\_LOW pour Speculative Grade) aligne parfaitement l'approche technique avec les pratiques métier, où la distinction majeure se fait entre obligations investissables et spécu\-latives en plus de rééquilibrer les classes comme nous le verrons juste après.
     
     \subsubsection*{Analyse exploratoire des données (EDA)}
     
@@ -493,14 +489,20 @@
         \label{fig:eda_corr_matrix_classif}
     \end{figure}
 
-    Enfin, l'analyse de corrélation entre les variables numériques et la classe regroupée encodée (Figure~\ref{fig:eda_feature_corr_classif}) révèle que \texttt{debtRatio} (+0.22), \texttt{enterpriseValueMultiple} (+0.086) et \texttt{cashRatio} (+0.025) sont positivement corrélés avec un meilleur rating, tandis que les indicateurs \texttt{payables\-Turnover} (-0.06) et \texttt{freeCashFlow\-Operating\-CashFlow\-Ratio} (-0.052) montrent une corrélation négative. Toutefois, ces corrélations restent faibles, suggérant que la prédiction de la notation de crédit nécessite une analyse multivariée complexe plutôt qu'une simple relation linéaire avec une ou deux variables.
-    
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{figures/matrice_corr_cible_classif.png}
-        \caption{Corrélations des features avec la variable cible Grouped\_Rating}
-        \label{fig:eda_feature_corr_classif}
-    \end{figure}
+    \noindent\begin{minipage}[t]{0.50\textwidth}
+        \vspace{1.5cm}
+        Enfin, l'analyse de corrélation entre les variables numériques et la classe regroupée encodée (Figure~\ref{fig:eda_feature_corr_classif}) révèle que \texttt{debtRatio} (+0.22), \texttt{enterpriseValueMultiple} (+0.086) et \texttt{cashRatio} (+0.025) sont positivement corrélés avec un meilleur rating, tandis que les indicateurs \texttt{payables\-Turnover} (-0.06) et \texttt{freeCashFlow\-Operating\-CashFlow\-Ratio} (-0.052) montrent une corrélation négative. Toutefois, ces corrélations restent faibles, suggérant que la prédiction de la notation de crédit nécessite une analyse multivariée complexe plutôt qu'une simple relation linéaire avec une ou deux variables.
+    \end{minipage}%
+    \hfill%
+    \begin{minipage}[t]{0.49\textwidth}
+        \vspace{0pt}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=\textwidth]{figures/matrice_corr_cible_classif.png}
+            \caption{Corrélations des features avec la variable cible Grouped\_Rating}
+            \label{fig:eda_feature_corr_classif}
+        \end{figure}
+    \end{minipage}
     
     \subsubsection*{Préparation et prétraitement des données}
     
@@ -535,17 +537,17 @@
     
     \subsubsection*{Cross-Conformal Prediction (CCP)}
     
-    CCP exploite la validation croisée K-folds pour maximiser l'utilisation des données disponibles. La méthode a été entièrement implémentée par LLM en s'appuyant sur le papier fondateur de Lei et al.~\cite{lei2014distributionfreepredictiveinferenceregression}. Elle entraîne $K$ modèles (ici $K=5$) et combine leurs p-values via moyenne arithmétique pour garantir la validité statistique. Cette implémentation sert de référence pour évaluer les limites de notre SCP face à un dataset de taille modeste. 
+    CCP exploite la validation croisée K-folds pour maximiser l'utilisation des données disponibles. La méthode a été entièrement implémentée par LLM en s'appuyant sur ce papier~\cite{Vovk2012CrossConformalPredictors}. Elle entraîne $K$ modèles (ici $K=5$) et combine leurs p-values via moyenne arithmétique pour garantir la validité statistique. Cette implémentation sert de référence pour évaluer les limites de notre SCP face à un dataset de taille modeste. 
     
     \textbf{Note importante} : CCP ne rentre pas dans les critères de notation du projet car entièrement générée par IA. Elle constitue uniquement un outil de comparaison pour comprendre l'impact de la taille du calibration set sur les performances de SCP.
     
     \subsubsection*{Choix des scores de conformité}
     
-    Deux scores ont été testés pour mesurer la non-conformité d'une prédiction :
+    Deux scores ont été testés pour mesurer la conformité d'une prédiction :
     
-    \textbf{Score absolu} : $S(X, y) = 1 - \hat{p}(y|X)$ où $\hat{p}(y|X)$ est la probabilité prédite pour la classe $y$. Simple et interprétable, il pénalise directement les classes avec faible probabilité.
+    \textbf{Score absolu} : $S(X, y) = 1 - \hat{p}(y|X)$ où $\hat{p}(y|X)$ est la probabilité que le modèle attribue à la classe $y$. Plus la probabilité est élevée, plus le score est faible. Ce score est simple et interprétable : il pénalise directement les prédictions avec une faible confiance.
     
-    \textbf{Score cumulatif} : $S(X, y) = \sum_{j : \hat{p}(j|X) \geq \hat{p}(y|X)} \hat{p}(j|X)$. Ce score mesure la masse de probabilité cumulée jusqu'à la vraie classe (classement décroissant). Il tend à produire des ensembles plus larges mais mieux calibrés sur les classes difficiles.
+    \textbf{Score cumulatif} : $S(X, y) = \sum_{j \in C} \hat{p}(j|X)$ où $C$ est l'ensemble des classes ayant une probabilité supérieure ou égale à celle de $y$. En d'autres termes, on additionne les probabilités de toutes les classes mieux classées que la vraie classe. Ce score tend à produire des ensembles plus larges mais mieux calibrés sur les cas difficiles.
     
     \subsection{Mise en place des modèles}
     
@@ -573,7 +575,7 @@
     
     \subsubsection*{Synthèse des performances}
     
-    Sur le test set (203 observations), les quatre configurations testées donnent les résultats suivants :
+    Sur l'ensemble de test, c'est à dire 203 observations, les quatre configurations testées donnent les résultats suivants :
     
     \begin{table}[H]
     \centering
@@ -601,17 +603,19 @@
         \caption{Comparaison des taux de couverture et tailles moyennes d'ensembles pour les quatre configurations}
         \label{fig:pred_conforme_classification_comparison}
     \end{figure}
-    
+
     \textbf{CCP cumulatif obtient la meilleure couverture} (91.63\%), proche de la cible théorique de 90\%, avec des ensembles de taille moyenne 2.86. Les quatre méthodes présentent des tailles d'ensembles similaires (2.65 à 2.86), indiquant une difficulté comparable à discriminer les classes de rating. Le score cumulatif de CCP surpasse légèrement le score absolu (+2.5 points de couverture), tandis que pour SCP les deux scores donnent des résultats proches en couverture mais le score cumulatif produit des ensembles légèrement plus larges.
     
+    \textbf{Limite observée} : Les couvertures de SCP (87.68\% et 85.71\%) restent relativement loin de la cible théorique de 90\%, reflétant la difficulté du problème de classification à 6 classes avec un dataset de taille modeste.
+
     \subsubsection*{Exemples de prédictions}
     
     Le tableau ci-dessous illustre les ensembles de prédiction obtenus sur un échantillon aléatoire de 10 observations du test set. Pour chaque observation, on compare les ensembles produits par SCP avec score absolu et score cumulatif.
     
     \begin{table}[h]
     \centering
-    \small
-    \begin{tabular}{|c|c|p{4.5cm}|p{4.5cm}|}
+    \footnotesize
+    \begin{tabular}{|c|c|l|l|}
     \hline
     \textbf{Obs} & \textbf{Vraie classe} & \textbf{SCP Absolu} & \textbf{SCP Cumulatif} \\
     \hline
@@ -643,8 +647,8 @@
     
     On observe que les deux scores produisent souvent des ensembles identiques ou très similaires. La vraie classe est systématiquement incluse dans l'ensemble (garantie de couverture respectée localement pour ces exemples). Les ensembles contiennent généralement 2 à 3 classes, reflétant la difficulté de discrimination du modèle. L'observation 78 illustre un cas où le score cumulatif produit un ensemble plus large (4 classes) que le score absolu (2 classes), révélant une incertitude accrue pour ce profil particulier.
     
-    \textbf{Limite observée} : Les couvertures de SCP (87.68\% et 85.71\%) restent relativement loin de la cible théorique de 90\%, reflétant la difficulté du problème de classification à 6 classes avec un dataset de taille modeste.
-    
+    Une propriété remarquable est que les classes prédites sont systématiquement \textbf{contiguës} dans l'échelle de notation (par exemple IG\_LOW, IG\_MED, SPEC\_HIGH ou SPEC\_HIGH, SPEC\_MED, SPEC\_LOW), sans jamais observer de combinaisons incohérentes comme \{IG\_HIGH, SPEC\_LOW\}. Cette contiguïté est logique et rassurante : elle reflète le fait que l'incertitude du modèle se concentre sur les classes voisines dans l'échelle de risque, ce qui correspond aux pratiques financières réelles où une entreprise borderline peut osciller entre des notations adjacentes, mais rarement entre des catégories extrêmes (Investment Grade de haute qualité et Speculative de très faible qualité).
+        
     \subsubsection*{Analyse par classe}
     
     L'analyse du taux de couverture par classe révèle des disparités importantes. Les classes IG\_MED (A) et IG\_LOW (BBB), majoritaires dans le dataset (671 et 624 obs. originales), affichent des couvertures supérieures à 90\% avec SCP absolu. À l'inverse, les classes minoritaires IG\_HIGH et SPEC\_LOW présentent des couvertures inférieures à 80\%. Cette hétérogénéité reflète le déséquilibre résiduel malgré le regroupement des classes.
@@ -653,9 +657,9 @@
 
     \subsubsection*{Interprétation métier}
     
-    La prédiction conforme en classification apporte une valeur décisionnelle claire. Un ensemble singleton \{IG\_MED\} signale une entreprise clairement identifiée comme Investment Grade de qualité moyenne, autorisant une décision rapide. Un ensemble \{IG\_LOW, SPEC\_HIGH\} révèle une entreprise à la frontière critique BBB/BB, justifiant une analyse approfondie avant décision. Un ensemble large \{IG\_MED, IG\_LOW, SPEC\_HIGH\} indique une forte incertitude nécessitant une due diligence complète.
+    La prédiction conforme en classification apporte une valeur décisionnelle claire. Un ensemble singleton \{IG\_MED\} ou un ensemble tuple \{IG\_HIGH, IG\_MED\} signale une entreprise clairement identifiée comme Investment Grade de qualité moyenne ou plus, autorisant une décision rapide. Un ensemble \{IG\_LOW, SPEC\_HIGH\} révèle une entreprise à la frontière critique BBB/BB, justifiant une analyse approfondie avant décision. Un ensemble large \{IG\_MED, IG\_LOW, SPEC\_HIGH\} indique une forte incertitude nécessitant une expertise humaine.
     
-    Dans le contexte réglementaire de Bâle III, cette information est précieuse afin de pouvoir justifier les décisions d'investissement auprès des régulateurs.
+    Dans le contexte réglementaire de Bâle III~\cite{BanqueDeFrance_BaleIII_2025}, cette information est précieuse afin de pouvoir justifier les décisions d'investissement auprès des régulateurs.
     
     \subsubsection*{Limites et perspectives}
     
@@ -665,7 +669,7 @@
 
     Ce projet a implémenté et comparé la \textbf{régression quantile} et la \textbf{prédiction conforme} sur deux problématiques financières : l'évaluation du risque de crédit individuel (régression) et la notation d'entreprises (classification).
 
-    Dans le secteur financier, ces techniques apportent trois avantages majeurs : (1) la \textbf{quantification de l'incertitude} permet d'adapter les conditions de prêt selon le profil, (2) les \textbf{garanties statistiques formelles} répondent aux exigences réglementaires de Bâle III, (3) la \textbf{détection automatique des cas ambigus} optimise l'allocation des ressources d'analyse entre traitement automatisé et expertise humaine.
+    Dans le secteur financier, ces techniques apportent trois avantages majeurs : (1) la \textbf{quantification de l'incertitude} permet d'adapter les conditions de prêt selon le profil, (2) les \textbf{garanties statistiques formelles} répondent aux exigences réglementaires de Bâle III~\cite{BanqueDeFrance_BaleIII_2025}, (3) la \textbf{détection automatique des cas ambigus} optimise l'allocation des ressources d'analyse entre traitement automatisé et expertise humaine.
 
     Les perspectives incluent l'implémentation de Conformal Quantile Regression pour des intervalles adaptatifs, l'enrichissement des datasets et l'exploration de modèles de base plus performants.
 

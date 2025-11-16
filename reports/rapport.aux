@@ -13,6 +13,8 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{BanqueDeFrance_BaleIII_2025}
+\citation{Zoppelletto_FinancialRiskLoanApproval}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Tâche de régression - Risque d'un client contracteur de crédit}{2}{section.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Présentation du jeu de données et pré-traitement}{2}{subsection.2.1}\protected@file@percent }
@@ -25,51 +27,59 @@
 \newlabel{fig:eda_bivariate}{{3}{5}{Analyse bivariée : relations entre features principales et RiskScore}{figure.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Corrélations des features avec la variable cible RiskScore}}{5}{figure.4}\protected@file@percent }
 \newlabel{fig:eda_feature_importance}{{4}{5}{Corrélations des features avec la variable cible RiskScore}{figure.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Régression Quantile}{7}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Fondements théoriques}{7}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Choix du modèle et justification}{7}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Mise en place et construction des intervalles}{7}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Résultats et interprétation}{7}{subsection.3.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Taux de couverture empirique des quatre modèles de régression quantile}}{8}{figure.5}\protected@file@percent }
-\newlabel{fig:quantile_coverage}{{5}{8}{Taux de couverture empirique des quatre modèles de régression quantile}{figure.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparaison des performances des modèles de régression quantile}}{8}{table.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Régression quantile sur le modèle 1 (une seule feature) : quantiles 0.05, 0.50 et 0.95}}{9}{figure.6}\protected@file@percent }
-\newlabel{fig:quantile_reg_model1}{{6}{9}{Régression quantile sur le modèle 1 (une seule feature) : quantiles 0.05, 0.50 et 0.95}{figure.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Prédiction Conforme pour la Régression}{9}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Choix des méthodes et justification}{9}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Mise en place des modèles}{10}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Résultats et interprétation}{11}{subsection.4.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Comparaison SCP vs CV+ pour la prédiction conforme en régression}}{11}{table.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Exemples de prédictions avec intervalles conformes pour SCP et CV+ sur le test set}}{11}{figure.7}\protected@file@percent }
-\newlabel{fig:pred_conforme_regression_examples}{{7}{11}{Exemples de prédictions avec intervalles conformes pour SCP et CV+ sur le test set}{figure.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparaison des taux de couverture et largeurs moyennes d'intervalles pour SCP et CV+}}{12}{figure.8}\protected@file@percent }
-\newlabel{fig:pred_conforme_regression_comparison}{{8}{12}{Comparaison des taux de couverture et largeurs moyennes d'intervalles pour SCP et CV+}{figure.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Tâche de classification - Catégorie de note de crédit d'entreprise}{13}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Présentation du jeu de données et pré-traitement}{13}{subsection.5.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Synthèse des variables du dataset de classification}}{14}{table.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Distribution originale de la variable cible Rating (10 classes fortement déséquilibrées)}}{15}{figure.9}\protected@file@percent }
-\newlabel{fig:eda_rating_dist}{{9}{15}{Distribution originale de la variable cible Rating (10 classes fortement déséquilibrées)}{figure.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Distribution regroupée de la variable cible (6 classes équilibrées)}}{15}{figure.10}\protected@file@percent }
-\newlabel{fig:eda_grouped_rating}{{10}{15}{Distribution regroupée de la variable cible (6 classes équilibrées)}{figure.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Matrice de corrélation des variables numériques}}{16}{figure.11}\protected@file@percent }
-\newlabel{fig:eda_corr_matrix_classif}{{11}{16}{Matrice de corrélation des variables numériques}{figure.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Corrélations des features avec la variable cible Grouped\_Rating}}{17}{figure.12}\protected@file@percent }
-\newlabel{fig:eda_feature_corr_classif}{{12}{17}{Corrélations des features avec la variable cible Grouped\_Rating}{figure.12}{}}
-\citation{lei2014distributionfreepredictiveinferenceregression}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Prédiction Conforme pour la Classification}{18}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Choix des méthodes et justification}{18}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Mise en place des modèles}{18}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Résultats et interprétation}{19}{subsection.6.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Comparaison des méthodes de prédiction conforme en classification}}{19}{table.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Comparaison des taux de couverture et tailles moyennes d'ensembles pour les quatre configurations}}{20}{figure.13}\protected@file@percent }
-\newlabel{fig:pred_conforme_classification_comparison}{{13}{20}{Comparaison des taux de couverture et tailles moyennes d'ensembles pour les quatre configurations}{figure.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Régression Quantile}{6}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Fondements théoriques}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Choix du modèle et justification}{6}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Mise en place et construction des intervalles}{6}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Résultats et interprétation}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Taux de couverture empirique des quatre modèles de régression quantile}}{7}{figure.5}\protected@file@percent }
+\newlabel{fig:quantile_coverage}{{5}{7}{Taux de couverture empirique des quatre modèles de régression quantile}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparaison des performances des modèles de régression quantile}}{7}{table.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Régression quantile sur le modèle 1 (une seule feature) : quantiles 0.05, 0.50 et 0.95}}{8}{figure.6}\protected@file@percent }
+\newlabel{fig:quantile_reg_model1}{{6}{8}{Régression quantile sur le modèle 1 (une seule feature) : quantiles 0.05, 0.50 et 0.95}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Prédiction Conforme pour la Régression}{8}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Choix des méthodes et justification}{8}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Mise en place des modèles}{9}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Résultats et interprétation}{10}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Comparaison SCP vs CV+ pour la prédiction conforme en régression}}{10}{table.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Exemples de prédictions avec intervalles conformes pour SCP et CV+ sur le test set}}{10}{figure.7}\protected@file@percent }
+\newlabel{fig:pred_conforme_regression_examples}{{7}{10}{Exemples de prédictions avec intervalles conformes pour SCP et CV+ sur le test set}{figure.7}{}}
+\citation{Agewerc_CorporateCreditRating}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparaison des taux de couverture et largeurs moyennes d'intervalles pour SCP et CV+}}{11}{figure.8}\protected@file@percent }
+\newlabel{fig:pred_conforme_regression_comparison}{{8}{11}{Comparaison des taux de couverture et largeurs moyennes d'intervalles pour SCP et CV+}{figure.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Tâche de classification - Catégorie de note de crédit d'entreprise}{12}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Présentation du jeu de données et pré-traitement}{12}{subsection.5.1}\protected@file@percent }
+\citation{BanqueDeFrance_BaleIII_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Synthèse des variables du dataset de classification}}{13}{table.4}\protected@file@percent }
+\newlabel{tab:variables_classification}{{4}{13}{Synthèse des variables du dataset de classification}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Distribution originale de la variable cible Rating (10 classes fortement déséquilibrées)}}{14}{figure.9}\protected@file@percent }
+\newlabel{fig:eda_rating_dist}{{9}{14}{Distribution originale de la variable cible Rating (10 classes fortement déséquilibrées)}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Distribution regroupée de la variable cible (6 classes équilibrées)}}{14}{figure.10}\protected@file@percent }
+\newlabel{fig:eda_grouped_rating}{{10}{14}{Distribution regroupée de la variable cible (6 classes équilibrées)}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Matrice de corrélation des variables numériques}}{15}{figure.11}\protected@file@percent }
+\newlabel{fig:eda_corr_matrix_classif}{{11}{15}{Matrice de corrélation des variables numériques}{figure.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Corrélations des features avec la variable cible Grouped\_Rating}}{15}{figure.12}\protected@file@percent }
+\newlabel{fig:eda_feature_corr_classif}{{12}{15}{Corrélations des features avec la variable cible Grouped\_Rating}{figure.12}{}}
+\citation{Vovk2012CrossConformalPredictors}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Prédiction Conforme pour la Classification}{16}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Choix des méthodes et justification}{16}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Mise en place des modèles}{17}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Résultats et interprétation}{17}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Comparaison des méthodes de prédiction conforme en classification}}{18}{table.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Comparaison des taux de couverture et tailles moyennes d'ensembles pour les quatre configurations}}{18}{figure.13}\protected@file@percent }
+\newlabel{fig:pred_conforme_classification_comparison}{{13}{18}{Comparaison des taux de couverture et tailles moyennes d'ensembles pour les quatre configurations}{figure.13}{}}
+\citation{BanqueDeFrance_BaleIII_2025}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Exemples d'ensembles de prédiction pour SCP avec les deux scores}}{19}{table.6}\protected@file@percent }
+\newlabel{tab:pred_conforme_classification_examples}{{6}{19}{Exemples d'ensembles de prédiction pour SCP avec les deux scores}{table.6}{}}
+\citation{BanqueDeFrance_BaleIII_2025}
 \bibstyle{plain}
 \bibdata{references}
-\bibcite{lei2014distributionfreepredictiveinferenceregression}{1}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Exemples d'ensembles de prédiction pour SCP avec les deux scores}}{21}{table.6}\protected@file@percent }
-\newlabel{tab:pred_conforme_classification_examples}{{6}{21}{Exemples d'ensembles de prédiction pour SCP avec les deux scores}{table.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{21}{section.7}\protected@file@percent }
-\newlabel{LastPage}{{}{21}{}{page.21}{}}
-\xdef\lastpage@lastpage{21}
-\xdef\lastpage@lastpageHy{21}
-\gdef \@abspage@last{22}
+\bibcite{Agewerc_CorporateCreditRating}{1}
+\bibcite{BanqueDeFrance_BaleIII_2025}{2}
+\bibcite{Zoppelletto_FinancialRiskLoanApproval}{3}
+\bibcite{Vovk2012CrossConformalPredictors}{4}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{20}{section.7}\protected@file@percent }
+\newlabel{LastPage}{{}{20}{}{page.20}{}}
+\xdef\lastpage@lastpage{20}
+\xdef\lastpage@lastpageHy{20}
+\gdef \@abspage@last{21}
